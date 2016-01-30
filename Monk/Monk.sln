@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monk.CSharp", "Monk.CSharp.csproj", "{9C8C9B89-407C-59B8-4808-8ED0CDDF15A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monk.CSharp.Editor", "Monk.CSharp.Editor.csproj", "{48CEEC9C-15F5-45FD-D278-DDC61240F0FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C8C9B89-407C-59B8-4808-8ED0CDDF15A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C8C9B89-407C-59B8-4808-8ED0CDDF15A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C8C9B89-407C-59B8-4808-8ED0CDDF15A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C8C9B89-407C-59B8-4808-8ED0CDDF15A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48CEEC9C-15F5-45FD-D278-DDC61240F0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48CEEC9C-15F5-45FD-D278-DDC61240F0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48CEEC9C-15F5-45FD-D278-DDC61240F0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48CEEC9C-15F5-45FD-D278-DDC61240F0FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
