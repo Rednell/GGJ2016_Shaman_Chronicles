@@ -66,18 +66,26 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\MazeFloor.cs" />
+    <Compile Include="Assets\Scripts\MazePhantom.cs" />
     <Compile Include="Assets\Scripts\MazePhanton.cs" />
+    <Compile Include="Assets\Scripts\MazePhantonPath.cs" />
     <Compile Include="Assets\Scripts\MazeRune.cs" />
     <Compile Include="Assets\Scripts\MonkGamePrefs.cs" />
+    <Compile Include="Assets\Scripts\MovementCollisionScript.cs" />
     <Compile Include="Assets\Scripts\PlayerCamera.cs" />
+    <Compile Include="Assets\Scripts\PlayerControlScript.cs" />
     <Compile Include="Assets\Scripts\PlayerControler.cs" />
     <Compile Include="Assets\Scripts\PlayerSpiritualGuideTalks.cs" />
+    <Compile Include="Assets\Scripts\RecordTimeScript.cs" />
     <Compile Include="Assets\Scripts\Spawn.cs" />
     <Compile Include="Assets\Scripts\UI\PauseGame.cs" />
     <Compile Include="Assets\Scripts\UI\TalkToMe.cs" />
