@@ -3,6 +3,11 @@ using System.Collections;
 
 public class PlayerControler : MonoBehaviour {
 	public LayerMask layer;
+	public float moveSpeed = 4;
+	public float turnSpeed = 10;
+
+	Vector3 targetPosition;
+	Quaternion targetRotation;
 
 	// Use this for initialization
 	void Start () {
@@ -13,46 +18,57 @@ public class PlayerControler : MonoBehaviour {
 			else
 				throw new System.Exception("Place the Player over some MazeFloor");
 		}
+
+		targetPosition = transform.position;
+		targetRotation = transform.localRotation;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, turnSpeed * Time.deltaTime);
+		transform.position = Vector3.Lerp (transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
 		if (Time.timeScale < 0.9f) return;
 			
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-			transform.localRotation *= Quaternion.AngleAxis(-90, Vector3.up);
+			Turn(-90);
 		}
 
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
-			transform.localRotation *= Quaternion.AngleAxis(90, Vector3.up);
+			Turn(90);
 		}
 
 		if (Input.GetKeyDown(KeyCode.UpArrow)) {
-			MoveIfCan(transform.forward);
+			MoveIfCan(targetRotation * Vector3.forward);
 		}
 
 		if (Input.GetKeyDown(KeyCode.DownArrow)) {
-			MoveIfCan(-transform.forward);
+			MoveIfCan(-(targetRotation * Vector3.forward));
 		}
+	}
+
+	void Turn (float angle) {
+		transform.localRotation = targetRotation;
+		targetRotation *= Quaternion.AngleAxis(angle, Vector3.up);
 	}
 
 	void MoveIfCan (Vector3 delta) {
 		RaycastHit hit;
 		// Check if not a wall
-		if (Physics.Raycast(new Ray(transform.position, delta), out hit, 1f, layer.value)) {
+		if (Physics.Raycast(new Ray(targetPosition, delta), out hit, 1f, layer.value)) {
 			if (hit.collider.GetComponent<MazeFloor>())
 				return;
 		}
 
 		// Check if have floor bellow
-		if (Physics.Raycast(new Ray(transform.position + delta, Vector3.down), out hit, 1f, layer.value)) {
+		if (Physics.Raycast(new Ray(targetPosition + delta, Vector3.down), out hit, 0.75f)) {
 			if (!hit.collider.GetComponent<MazeFloor>())
 				return;
 		} else {
 			return; // cant move in float air
 		}
 
-		transform.localPosition += delta; 
+		targetPosition += delta; 
 	}
 
 	void OnTriggerEnter (Collider other) {
