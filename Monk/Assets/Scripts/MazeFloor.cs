@@ -19,7 +19,10 @@ public class MazeFloor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, MonkGamePrefs.MazeFloorSpeed * Time.deltaTime);
+		transform.localPosition = Vector3.MoveTowards(
+			transform.localPosition,
+			targetPosition,
+			MonkGamePrefs.MazeFloorSpeed * Time.unscaledDeltaTime);
 	}
 
 	public void MoveDown () {
