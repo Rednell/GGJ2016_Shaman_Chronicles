@@ -19,14 +19,14 @@ public class PlayerControler : MonoBehaviour {
 				throw new System.Exception("Place the Player over some MazeFloor");
 		}
 
-		targetPosition = transform.position;
+		targetPosition = transform.localPosition;
 		targetRotation = transform.localRotation;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, turnSpeed * Time.deltaTime);
-		transform.position = Vector3.Lerp (transform.position, targetPosition, moveSpeed * Time.deltaTime);
+		transform.localPosition = Vector3.Lerp (transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
 
 		if (Time.timeScale < 0.9f) return;
 			
@@ -55,13 +55,13 @@ public class PlayerControler : MonoBehaviour {
 	void MoveIfCan (Vector3 delta) {
 		RaycastHit hit;
 		// Check if not a wall
-		if (Physics.Raycast(new Ray(targetPosition, delta), out hit, 1f, layer.value)) {
+		if (Physics.Raycast(new Ray(transform.TransformPoint(targetPosition), delta), out hit, 1f, layer.value)) {
 			if (hit.collider.GetComponent<MazeFloor>())
 				return;
 		}
 
 		// Check if have floor bellow
-		if (Physics.Raycast(new Ray(targetPosition + delta, Vector3.down), out hit, 0.75f)) {
+		if (Physics.Raycast(new Ray(transform.TransformPoint(targetPosition) + delta, Vector3.down), out hit, 0.75f)) {
 			if (!hit.collider.GetComponent<MazeFloor>())
 				return;
 		} else {
